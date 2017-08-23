@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  # root to:
+
+  resources :users, only: [:index]
+  resources :conversations, only: [:index, :show]
+  resources :personal_messages, only: [:new, :create]
+
+  root 'conversations#index'
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
-  has_many :recievered_conversations, class_name: 'Conversation', foreign_key: 'reciever_id' 
+  has_many :receivered_conversations, class_name: 'Conversation', foreign_key: 'receiver_id' 
   has_many :personal_messages, dependent: :destroy
 
   def name
