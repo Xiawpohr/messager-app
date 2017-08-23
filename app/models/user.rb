@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
+  has_many :recievered_conversations, class_name: 'Conversation', foreign_key: 'reciever_id' 
+  has_many :personal_messages, dependent: :destroy
+
   def name
     email.split('@')[0]
   end
