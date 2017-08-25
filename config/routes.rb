@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  mount ActionCable.server => '/cable'
 
   resources :users, only: [:index]
   resources :conversations, only: [:index, :show]
