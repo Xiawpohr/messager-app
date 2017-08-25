@@ -19,6 +19,8 @@ jQuery(document).on 'turbolinks:load', ->
       if messages.size() > 0 && messages.data('conversation-id') is data['conversation_id']
         messages.append data['message']
         messages_to_bottom()
+      else
+        $.getScript('/conversations') if $('#conversations').size() > 0
         $('body').append(data['notification']) if data['notification']
 
   if messages.length > 0

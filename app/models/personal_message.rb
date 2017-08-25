@@ -5,6 +5,7 @@ class PersonalMessage < ApplicationRecord
   validates :content, presence: true
 
   after_create_commit do
+    conversation.touch
     NotificationBroadcastJob.perform_later(self)
   end
 
